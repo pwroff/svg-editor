@@ -1,0 +1,76 @@
+@import (reference) "../../styles/variables";
+@import (reference) "../../styles/mixins";
+
+.attribute-panel {
+  position: absolute;
+  height: 100vh;
+  width: 35rem;
+  padding: 1rem 0;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  color: @base;
+  background-color: @dark;
+  box-shadow: 0 0 2rem 0 @darkA;
+  transform: translate3d(30rem, 0, 0);
+  transition: transform 400ms ease-out;
+
+  .attribute-control {
+    height: 3rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    position: relative;
+    .toggle-button {
+      height: 3rem;
+      width: 5rem;
+      cursor: pointer;
+
+      .icon {
+        display: block;
+        width: 100%;
+        padding: 1.3rem;
+        transform: rotate(90deg);
+        svg {
+          display: block;
+          height: 100%;
+          width: auto;
+          fill: @base;
+        }
+      }
+    }
+  }
+
+  &.active {
+    transform: translate3d(0rem, 0, 0);
+
+    .toggle-button {
+      .icon {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .attribute {
+    width: 100%;
+    padding: 1rem 2rem 0 5rem;
+    position: relative;
+    height: auto;
+    min-height: 5rem;
+    text-transform: capitalize;
+
+    .attribute-label {
+      height: 3rem;
+      width: 5rem;
+      line-height: 1;
+      font-size: 2.4rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      text-transform: uppercase;
+      text-align: center;
+      color: @primary;
+      .vertical-absolute-center();
+    }
+  }
+}

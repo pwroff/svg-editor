@@ -1,0 +1,67 @@
+.user-select(@prop) {
+  -webkit-user-select: @prop;
+  -moz-user-select: @prop;
+  -ms-user-select: @prop;
+  user-select: @prop;
+}
+
+.fontDeclare(@fontName, @list, @code) {
+  & {
+    .loop(@i:1) when (@i =< length(@list)) {
+      @path: extract(@list, @i);
+      @weight: extract(@list, @i + 1);
+      @style: extract(@list, @i + 2);
+
+      @code();
+
+      .loop(@i + 3);
+    }
+
+    .loop();
+  }
+}
+
+.absolute-center() {
+  max-width: 100%;
+  margin: 0 !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50% !important;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.horizontal-absolute-center() {
+  margin: 0 !important;
+  position: absolute;
+  left: 50%;
+  margin-right: -50% !important;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+}
+
+.vertical-absolute-center() {
+  margin: 0 !important;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+}
+
+.clearfix() {
+  &:before, &:after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+}
